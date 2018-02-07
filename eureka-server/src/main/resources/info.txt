@@ -1,0 +1,18 @@
+注册中心的地址和端口号
+http://localhost:8011/
+http://localhost:8012/    对应application-peer2.properties
+http://localhost:8013/    对应application-peer3.properties
+启动方式有:
+启动类
+java -jar eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer2
+java -jar eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer3
+
+服务提供者端口号和地址
+http://localhost:8080/hello,端口号有:
+8082      注册在 8012注册中心上 对应application-peer2.properties
+8083      注册在 8013注册中心上 对应对应application-peer3.properties
+
+服务消费者端口号和地址:
+http://localhost:8019/ribbon-consumer ,端口号有:
+8019  对应application.properties
+
