@@ -1,0 +1,16 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: hystrix-turbine
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:8012/eureka/
+  instance:
+    prefer-ip-address: true
+turbine:
+  aggregator:
+    clusterConfig: default
+  appConfig: ribbon-consumer
+  clusterNameExpression: "'default'"

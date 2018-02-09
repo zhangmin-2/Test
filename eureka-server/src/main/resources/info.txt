@@ -1,3 +1,6 @@
+application 直接启动类启动，是单节点注册中心
+application-peer2.properties java -jar方式启动，是集群注册中心方式
+
 注册中心的地址和端口号
 http://localhost:8011/
 http://localhost:8012/    对应application-peer2.properties
@@ -11,8 +14,18 @@ java -jar eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer3
 http://localhost:8080/hello,端口号有:
 8082      注册在 8012注册中心上 对应application-peer2.properties
 8083      注册在 8013注册中心上 对应对应application-peer3.properties
+8081      注册在8011注册中心上 对应application.properties
 
 服务消费者端口号和地址:
 http://localhost:8019/ribbon-consumer ,端口号有:
 8019  对应application.properties
+
+仪表盘端口
+9000
+
+集群trubine端口
+9001
+
+多个提供者一个消费者，改为多节点方式下需要注意修改消费者的配置文件方式
+
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="8005" shutdown="SHUTDOWN">
+  <Listener SSLEngine="on" className="org.apache.catalina.core.AprLifecycleListener"/>
+  <Listener className="org.apache.catalina.core.JasperListener"/>
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
+
+  <GlobalNamingResources>
+    <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
+  </GlobalNamingResources>
+
+  <Service name="Catalina">
+    <Connector URIEncoding="utf-8" compressableMimeType="text/html,text/xml,text/javascript,application/javascript,text/css,text/plain" compression="on" compressionMinSize="2048" connectionTimeout="20000" maxThreads="800" noCompressionUserAgents="gozilla, traviata" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Engine defaultHost="localhost" name="Catalina">
+      <Realm className="org.apache.catalina.realm.LockOutRealm">
+        <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
+      </Realm>
+      <Host appBase="webapps" autoDeploy="false" name="localhost" unpackWARs="false" workDir="workdir">
+        <!-- <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs/tomcat-access" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="${hostname}_access_log." resolveHosts="false" suffix=".log"/> -->
+      </Host>
+    </Engine>
+  </Service>
+</Server>

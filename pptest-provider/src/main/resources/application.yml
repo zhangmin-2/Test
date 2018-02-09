@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:db2://db2.bass.3g:50010/qa3exp
+    username: db2inst
+    password: mvxxwVMPE6QLXzU+hu+WCQ==
+    driver-class-name: com.ibm.db2.jcc.DB2Driver

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zm.provider.entity.Book;
 
 @RestController
@@ -51,7 +52,23 @@ public class HelloController {
     
     @RequestMapping(value = "/sayBook", method = RequestMethod.GET)
     public Book sayBook() {
-    	logger.info("----- HelloController getBook");
+    	logger.info("----- HelloController sayBook");
         return new Book("三国演义", 90, new Date());
     }
+    
+    @RequestMapping(value = "/getBook", method = RequestMethod.GET)
+    public Book getBook(@RequestBody Book book) {
+    	logger.info("----- HelloController getBook, book=" + JSONObject.toJSONString(book));
+    	book.setName("哈哈你过来了");
+        return book;
+    }
+    
+    @RequestMapping(value = "/getBook2")
+    public Book getBook2(@RequestBody Book book) {
+    	logger.info("----- HelloController getBook2, book=" + JSONObject.toJSONString(book));
+    	book.setName("说谎");
+        return book;
+    }
+    
+    
 }
